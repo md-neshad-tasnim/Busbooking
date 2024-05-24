@@ -214,7 +214,10 @@ button
         echo "</td><td>";
          echo $row['departure_date'];
         echo "</td><td>";
-         echo $row['departure_time'];
+         // Extract the time portion from the string
+        list($hours, $minutes, $seconds) = sscanf($row['departure_time'], '%d:%d:%d.%d');
+        $formattedTime24Hour = sprintf('%02d:%02d', $hours, $minutes);
+        echo $formattedTime24Hour; 
         echo "</td><td>";
          echo $row['cost'];
         echo "</td>";
